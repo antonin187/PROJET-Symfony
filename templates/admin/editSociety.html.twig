@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block firstpage %}
+    <section class="flex column vert-align center beginsection">
+        <div class="title xLarge-12 large-12 medium-12 xSmall-12 small-12">
+            <img src="{{ asset("assets/img/A.svg") }}" alt="A">
+            <p><span style="font-size: 120px">Modifier une société</span>
+        </div>
+    </section>
+{% endblock %}
+{% block content %}
+    <section class="fullWidth flex center inputs-section">
+        <div class="xLarge-9 large-9 medium-9 xSmall-12 small-12">
+            {{ form_start(formUpdateSociety) }}
+            <div class="flex fullWidth inputs">
+                <div class="label">{{form_label(formUpdateSociety.name, "Nom de la société") }}</div>
+                <div class="widget">{{form_widget(formUpdateSociety.name) }}</div>
+            </div>
+            <div class="flex fullWidth inputs">
+                <div class="label">{{form_label(formUpdateSociety.picture, "Image") }}</div>
+                <div class="widget">{{form_widget(formUpdateSociety.picture) }}</div>
+            </div>
+            <div class="flex fullWidth inputs select">
+                <div class="label">{{form_label(formUpdateSociety.category, "Catégorie") }}</div>
+                <div class="widget">{{form_widget(formUpdateSociety.category) }}</div>
+            </div>
+            <div class="flex fullWidth inputs">
+                <div class="label">{{form_label(formUpdateSociety.description, "Description") }}</div>
+                <div class="widget">{{form_widget(formUpdateSociety.description) }}</div>
+            </div>
+            <div class="flex fullWidth submit-button">
+                {{form_widget(formUpdateSociety.Valider) }}
+            </div>
+            {{ form_end(formUpdateSociety) }}
+        </div>
+    </section>
+{% endblock %}

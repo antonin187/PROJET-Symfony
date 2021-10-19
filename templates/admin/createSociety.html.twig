@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+{% block firstpage %}
+    <section class="flex column vert-align center beginsection">
+        <div class="title xLarge-12 large-12 medium-12 xSmall-12 small-12">
+            <img src="{{ asset("assets/img/A.svg") }}" alt="A">
+            <p><span style="font-size: 120px">Créer une société</span>
+        </div>
+    </section>
+{% endblock %}
+{% block content %}
+    <section class="fullWidth flex center inputs-section">
+        <div class="xLarge-9 large-9 medium-9 xSmall-12 small-12">
+            {{ form_start(formCreateSociety) }}
+            <div class="flex fullWidth inputs">
+                <div class="label">{{form_label(formCreateSociety.name, "Nom de la société") }}</div>
+                <div class="widget">{{form_widget(formCreateSociety.name) }}</div>
+            </div>
+            <div class="flex fullWidth inputs">
+                <div class="label">{{form_label(formCreateSociety.picture, "Image") }}</div>
+                <div class="widget">{{form_widget(formCreateSociety.picture) }}</div>
+            </div>
+            <div class="flex fullWidth inputs select">
+                <div class="label">{{form_label(formCreateSociety.category, "Catégorie") }}</div>
+                <div class="widget">{{form_widget(formCreateSociety.category) }}</div>
+            </div>
+            <div class="flex fullWidth inputs">
+                <div class="label">{{form_label(formCreateSociety.description, "Description") }}</div>
+                <div class="widget">{{form_widget(formCreateSociety.description) }}</div>
+            </div>
+            <div class="flex fullWidth submit-button">
+                {{form_widget(formCreateSociety.Valider) }}
+            </div>
+            {{ form_end(formCreateSociety) }}
+        </div>
+    </section>
+
+
+{% endblock %}

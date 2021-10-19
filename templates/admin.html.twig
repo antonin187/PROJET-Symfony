@@ -1,0 +1,55 @@
+{% extends "base.html.twig" %}
+
+{% block firstpage %}
+    <section class="flex column vert-align center vidsection">
+        <img class="myVideo" src="{{ asset("assets/img/city.gif") }}" alt="A">
+        {#        <video autoplay muted loop class="myVideo" src="{{ asset("assets/video/city_compr.mp4") }}" type="video/mp4">#}
+        {#        </video>#}
+        <div class="title xLarge-12 large-12 medium-12 xSmall-12 small-12">
+            <img src="{{ asset("assets/img/A.svg") }}" alt="A">
+            <p><span style="font-size: 120px">ADMINISTRATION</span><br><br><span style="font-size:
+            20px">Gérez vos sociétés</span></p><br>
+        </div>
+    </section>
+{% endblock %}
+
+
+{% block content %}
+
+    <button id="createbutton">
+        <a href="{{ path('create')}}">Créer une société</a>
+    </button>
+<section class="fullWidth flex center">
+    <div class="divtableadmin xLarge-9 large-9 medium-9 xSmall-9 small-9">
+        <table class="fullWidth bottomrow" id="table_admin">
+            <tbody>
+            <tr class="toprow">
+                <td class="toprow leftcolumn">ID</td>
+                <td class="toprow">Nom</td>
+                <td class="toprow">Image</td>
+                <td class="toprow">Date</td>
+                <td class="toprow">Catégorie</td>
+                <td class="toprow">Description</td>
+                <td class="toprow rightcolumn">Actions</td>
+            </tr>
+            {% for society in societies %}
+                <tr>
+                    <td class="leftcolumn bottomrow">{{ society.id }}</td>
+                    <td class="bottomrow">{{ society.name }}</td>
+                    <td class="bottomrow">{{ society.picture }}</td>
+                    <td class="bottomrow">{{ society.date|date('d/m/Y') }}</td>
+                    <td class="bottomrow">{{ society.category.name }}</td>
+                    <td class="bottomrow">{{ society.description }}</td>
+                    <td class="rightcolumn bottomrow"><ul>
+                            <li><a href="{{ path('read', {'id': society.id})}}">Lire</a></li>
+                            <li><a href="{{ path('update', {'id': society.id})}}">Modifier</a></li>
+                            <li><a href="{{ path('delete', {'id': society.id})}}">Supprimer</a></li>
+                        </ul></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ asset("assets/css/style.css") }}">
+    <link rel="stylesheet" href="{{ asset("assets/css/responsive.css") }}">
+    <link rel="stylesheet" href="{{ asset("assets/css/reboot.css") }}">
+    <title>Antonin Simon Devoir Symfony</title>
+</head>
+<body>
+<header class="flex row">
+    <div class="headerdiv flex vert-align xLarge-2 large-2 medium-12 small-12 xSmall-12">
+        <img id="Apic" src="{{ asset("assets/img/A.svg") }}" alt="A">
+    </div>
+    <div class="headerdiv flex start vert-align xlarge-2 large-2 medium-12 small-12 xSmall-12">
+        Antonin's website
+    </div>
+    <div class="headerdiv flex row center vert-align xLarge-8 large-8 medium-12 small-12 xSmall-12">
+        <a href="{{ path('home') }}">Acceuil</a>
+        {% for category in categories %}
+            <a href="{{ path('category',{'id': category.id}) }}">{{ category.name }}</a>
+        {% endfor %}
+        <a href="{{ path('admin')}}">Admin</a>
+    </div>
+</header>
+<main>
+    {% block firstpage %}{% endblock %}
+
+    <div class="searchbar flex column center vert-align xLarge-12 large-12 medium-12 small-12 xSmall-12">
+        {{ form_start(searchForm) }}
+
+        {{form_widget(searchForm.name) }}
+        <br>
+        {{form_widget(searchForm.Valider) }}
+
+        {{ form_end(searchForm) }}
+    </div>
+    {% for message in app.flashes('notfound') %}
+        <p>{{ message }}</p>
+    {% endfor %}
+    {% block content %}{% endblock %}
+</main>
+<footer class="fullWidth flex center vert-align">
+    <p>Made by Antonin SIMON</p>
+</footer>
+<script src="{{ asset("assets/js/script.js") }}"></script>
+</body>
+</html>

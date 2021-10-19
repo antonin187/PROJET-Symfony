@@ -1,0 +1,25 @@
+{% extends"base.html.twig" %}
+
+{% block firstpage %}
+    <section class="flex column vert-align center" style="padding-top: 150px">
+    </section>
+{% endblock %}
+{% block content %}
+
+    <section class="flex center row wrap societies">
+        <div class="onlythissociety xLarge-7 large-7 medium-7 small-12 xSmall-12">
+            <img class="thesocpic" src="{{ asset('assets/img/'~society.picture) }}" alt="">
+            <p class="thesocname">{{ society.name }}</p>
+            <p class="thesocdescr">ID : {{ society.id }}</p>
+            <p class="thesocdescr">Date de création : {{ society.date|date('d/m/Y') }}</p>
+            <p class="thesocdescr">Catégorie : {{ society.category.name }}</p>
+            <p class="thesocdescr">Description : <br>{{ society
+                    .description }}</p>
+        </div>
+    </section>
+    <div class="fullWidth flex center">
+        <button class="backhome"><a href="{{ path('home') }}">Retour à l'admin</a></button>
+    </div>
+
+
+{% endblock %}

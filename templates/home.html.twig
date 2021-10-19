@@ -1,0 +1,31 @@
+{% extends"base.html.twig" %}
+
+{% block firstpage %}
+    <section class="flex column vert-align center vidsection">
+        <img class="myVideo" src="{{ asset("assets/img/city.gif") }}" alt="A">
+{#        <video autoplay muted loop class="myVideo" src="{{ asset("assets/video/city_compr.mp4") }}" type="video/mp4">#}
+{#        </video>#}
+        <div class="title xLarge-12 large-12 medium-12 xSmall-12 small-12">
+            <img src="{{ asset("assets/img/A.svg") }}" alt="A">
+            <p><span style="font-size: 120px">AIMED</span><br><br><span style="font-size: 20px">Gérez toutes vos
+                    sociétés</span></p><br>
+            <p>Accueil</p>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+    <section class="flex center row wrap societies">
+        {% for society in societies %}
+            <a class="soclink xLarge-4 large-4 medium-4 small-12 xSmall-12" href="{{ path('society',{'id': society.id}) }}">
+            <div class="thesociety">
+                <div class="containsocpic">
+                    <img class="socpic" src="{{ asset('assets/img/'~society.picture) }}" alt="">
+                </div>
+                <p class="socname">{{ society.name }}</p>
+                <p class="socdescr">{{ society.description }}</p>
+            </div>
+            </a>
+        {% endfor %}
+    </section>
+{% endblock %}
